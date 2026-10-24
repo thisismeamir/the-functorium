@@ -1,0 +1,24 @@
+pkgname=functorium
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Functorium knowledge system server"
+arch=('x86_64')
+url="https://github.com/thisismeamir/functorium"
+license=('Apache-2.0')
+depends=('gcc-libs' 'sqlite')
+makedepends=('rust' 'cargo')
+
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+    cd "$pkgname-$pkgver"
+    cargo build --release --locked -p fst-server
+}
+
+package() {
+    cd "$pkgname-$pkgver"
+
+    install -Dm755 target/release/fst-server \
+        "$pkgdir/usr/bin/fst-server"
+}
