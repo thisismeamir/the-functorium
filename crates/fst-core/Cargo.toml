@@ -1,0 +1,17 @@
+[package]
+name = "fst-core"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+hex = "0.4.3"
+regex = "1.13.1"
+rusqlite = { version = "0.40.2", features = ["bundled"] }
+serde = { version = "1.0.229", features = ["derive"] }
+sha2 = "0.11.1"
+thiserror = "2.0.21"
+toml = "1.1.8"
+walkdir = "2.5.0"
+
+[dev-dependencies]
+tempfile = "3.27.0"
